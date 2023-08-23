@@ -1,33 +1,41 @@
+import { Link, useNavigate } from "react-router-dom";
+import BaseTextInput from '../Calculators/BaseTextInput';
+import BaseSelectMenu from '../Calculators/BaseSelectMenu';
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import FormComponent from "./LoanFormCmp";
-function LoanTypeSelector({ formOptionMaturities: maturities, isVehicle, formCarStatus }) {
+import { house, consumer, vehicle } from '../../assets/jsons/loanTypeOptionRefferences.json';
+function LoanTypeSelector({ type }) {
     const navigate = useNavigate();
-    const [creditForm, setCreditForm] = useState({
-        amount: '',
-        maturity: '12',
-        vehicle: {
-            isActive: isVehicle || false,
-            value: '0'
+    const selectOptionRefferences = {
+        house,
+        consumer,
+        vehicle
+    };
+    const selectedOption = selectOptionRefferences[type];
+    const [amount, setAmount] = useState('');
+    const [option, setOption] = useState(selectedOption[0].key);
+    const [carStatus, setCarStatus] = useState('0');
+    const handleAmount = (e) => {
+        let value = e.target.value.replace(/\D/g, "");
+        if (/^\d+$/.test(value) || value === "") {
+            value = value == '' ? '' : parseInt(value).toLocaleString();
+            setAmount(value);
         }
-    });
-    const handleChange = (event) => {
-        const value = event.target.value.replaceAll('.', '');
-        if (/^[0-9]+$/.test(value))
-            setCreditForm({ ...creditForm, amount: Number(value).toLocaleString() });
     };
-    const maturityHandleChange = (event) => {
-        setCreditForm({ ...creditForm, maturity: event.target.value });
-    };
-    const vehicleHandleChange = (event) => {
-        setCreditForm({ ...creditForm, vehicle: { isActive: true, value: event.target.value } });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const urlAmount = amount.replace(/\D/g, "");
+        switch (type) {
+            case 'house':
+            case 'consumer':
+                navigate(`sorgulama?amount=${urlAmount}&maturity=${option}`);
+                break;
+            case 'vehicle':
+                navigate(`sorgulama?amount=${urlAmount}&maturity=${option}&type=${carStatus}`);
+                break;
+            default:
+                break;
+        }
     }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const amount = creditForm.amount.replaceAll('.', '');
-        if (creditForm.vehicle.isActive) return navigate(`sorgulama/?amount=${amount}&maturity=${creditForm.maturity}&type=${creditForm.vehicle.value}`)
-        navigate(`sorgulama/?amount=${amount}&maturity=${creditForm.maturity}`)
-    };
     return (
         <div className="flex justify-center">
             <div className="w-[800px]">
@@ -35,21 +43,31 @@ function LoanTypeSelector({ formOptionMaturities: maturities, isVehicle, formCar
                 <div className="border">
                     <ul className="flex w-full bg-[#eaf0f4] justify-between items-center text-lg text-[#1a4762]/[40px] font-semibold text-center divide-x divide-[rgba(173,181,187,.3)]">
                         <li className="w-full flex">
-                            <NavLink className="w-full py-1" to="/ihtiyac-kredisi">İhtiyaç</NavLink>
+                            <Link className={`${type == 'consumer' && 'active'} w-full py-1`} to="/ihtiyac-kredisi">İhtiyaç</Link>
                         </li>
                         <li className="w-full flex">
-                            <NavLink className="w-full py-1" to="/konut-kredisi">Konut</NavLink>
+                            <Link className={`${type == 'house' && 'active '} w-full py-1`} to="/konut-kredisi">Konut</Link>
                         </li>
                         <li className="w-full flex">
-                            <NavLink className="w-full py-1" to="/tasit-kredisi">Taşıt</NavLink>
+                            <Link className={`${type == 'vehicle' && 'active'} w-full py-1`} to="/tasit-kredisi">Taşıt</Link>
                         </li>
                         <li className="w-full flex">
-                            <NavLink className="w-full py-1" to="/kobi-kredisi">Kobi</NavLink>
+                            <Link className={`${type == 'kobi' && 'active'} w-full py-1`} to="/kobi-kredisi">Kobi</Link>
                         </li>
                     </ul>
-                    <div className="px-[8px]">
-                        <FormComponent vehicleHandleChange={vehicleHandleChange} formCarStatus={formCarStatus} isVehicle={isVehicle} handleSubmit={handleSubmit} maturities={maturities} maturityHandleChange={maturityHandleChange} handleChange={handleChange} creditForm={creditForm} />
-                    </div>
+                    {/* FORM */}
+                    <form onSubmit={handleSubmit} className="text-sm my-[16px]">
+                        <div className="space-x-5 flex flex-wrap items-center justify-center">
+                            <BaseTextInput value={amount} onChange={handleAmount} title="Kredi Tutarı" textInpDivClasses="mainLoan" textInpFormClasses="mainForm" indicator="TL" />
+                            <BaseSelectMenu formClass="mainForm" divClass="mainLoan" value={option} onChange={setOption} items={selectedOption} title="Kredi Vadesi" />
+                            {
+                                type == 'vehicle' &&
+                                <BaseSelectMenu formClass="mainForm" divClass="mainLoan" value={carStatus} onChange={setCarStatus} items={[{ key: '0', value: '0 Km' }, { key: '1', value: '2. El' }]} title="Araç Durumu" />
+
+                            }
+                            <button className="bg-[#ff6000] text-white px-[16px] w-1/3 mt-3 py-2 h-full rounded font-bold">Hesapla</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

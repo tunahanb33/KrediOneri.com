@@ -1,0 +1,254 @@
+[
+    {
+        "BridgeTollId": 1,
+        "VehicleName": "Otomobil",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": 8.25,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 2,
+        "VehicleName": "Otomobil",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": 8.25,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 3,
+        "VehicleName": "Otomobil",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 19.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 5,
+        "VehicleName": "Otomobil/Kamyonet",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": 53.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 6,
+        "VehicleName": "Hafif Ticari Araç",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": 10.75,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 7,
+        "VehicleName": "Hafif Ticari Araç",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": 10.75,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 8,
+        "VehicleName": "Hafif Ticari Araç",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 25.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 10,
+        "VehicleName": "Minibüs",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": 79.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 11,
+        "VehicleName": "Motosiklet",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": 3.25,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 12,
+        "VehicleName": "Motosiklet",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": 3.25,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 13,
+        "VehicleName": "Motosiklet",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 13.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 15,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 46.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 17,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 118.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 19,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "3. Köprü - Yavuz Sultan Selim",
+        "Toll": 147.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 21,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 22,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 23,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "1. Köprü - 15 Temmuz Şehitler",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 24,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 25,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 26,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "2. Köprü - Fatih Sultan Mehmet (FSM)",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 27,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 28,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 29,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 30,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "Avrasya Tüneli",
+        "Toll": null,
+        "IsEnabled": false
+    },
+    {
+        "BridgeTollId": 33,
+        "VehicleName": "Otomobil",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 184.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 34,
+        "VehicleName": "Hafif Ticari Araç",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 295.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 35,
+        "VehicleName": "Motosiklet",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 129.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 36,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 350.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 37,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 464.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 38,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "Osmangazi Köprüsü",
+        "Toll": 585.50,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 39,
+        "VehicleName": "Otomobil",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 200.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 40,
+        "VehicleName": "Hafif Ticari Araç",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 250.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 41,
+        "VehicleName": "Motosiklet",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 50.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 42,
+        "VehicleName": "3.Sınıf Araç",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 450.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 43,
+        "VehicleName": "4.Sınıf Araç",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 500.00,
+        "IsEnabled": true
+    },
+    {
+        "BridgeTollId": 44,
+        "VehicleName": "5.Sınıf Araç",
+        "BridgeName": "1915 Çanakkale Köprüsü",
+        "Toll": 950.00,
+        "IsEnabled": true
+    }
+]

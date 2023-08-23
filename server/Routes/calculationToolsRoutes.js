@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const { calculateCcCash, titleDeedFee } = require('../Controller/calculationToolsController');
-router.post('/CalculateCcCashAdvance', calculateCcCash);
-router.post('/CalculateTitleDeedFee', titleDeedFee)
+const { calculateMTV, calculateTitleDee, calculateBridgeToll, calculateTrafficPenalty } = require('../Controller/calculationToolsController');
+
+router.get('/calculatemtv', calculateMTV);
+router.get('/calculatetitledeedfee', calculateTitleDee);
+router.get('/calculatebridgetoll', calculateBridgeToll);
+router.get('/calculatetrafficpenalty', calculateTrafficPenalty);
 
 
 module.exports = router;

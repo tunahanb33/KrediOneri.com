@@ -1,4 +1,4 @@
-const { getBankViaSeoName, getHouseLoanDetail, getHouseLoanList, getConsumerLoanList, getVehicleLoanList } = require('../Services/dbServices');
+const { getBankViaSeoName, getHouseLoanDetail, getHouseLoanList, getConsumerLoanList, getVehicleLoanList, getConsumerLoanDetail, getVehicleLoanDetail } = require('../Services/dbServices');
 const houseLoanPaymentPlan = require('../Utils/houseLoanPaymentPlan');
 const monthlyInstallmentCalculator = require('../Utils/monthlyInstallmentCalculator');
 
@@ -90,9 +90,44 @@ const vehicleLoanList = async (req, res) => {
     res.status(200).json({ products: changedLoanList });
 }
 
+const consumerLoanDetail = async (req, res) => {
+    const { bankSeoName: seoName, maturity, amount } = req.query;
+    if (!seoName || !maturity || !amount) return res.status(400).json({ success: false, message: 'Invalid queries' });
+    const bank = await getBankViaSeoName(seoName);
+    if (!bank) return res.status(400).json({ success: false, message: 'Invalid bankSeoName' });
+    const matchedLoan = await getConsumerLoanDetail(amount, maturity, bank);
+    if (!matchedLoan) return res.status(400).json({ success: false, message: 'Not Found' });
+    const interestRate = matchedLoan.interestRate / 100;
+    const paymentPlan = { amount, maturity, interestRate, monthlyPayments: houseLoanPaymentPlan(amount, maturity, interestRate) };
+    const monthlyInstallment = monthlyInstallmentCalculator(amount, maturity, interestRate);
+    const totalInterestAmount = (monthlyInstallment * maturity) - amount;
+    const expenseAmount = (amount * 0.005);
+    const totalFeeAmount = expenseAmount;
+    const totalAmount = totalInterestAmount + parseInt(amount) + totalFeeAmount;
+    res.status(200).json({ productInfo: { ...matchedLoan._doc, expenseAmount, totalFeeAmount, amount, maturity, monthlyInstallment, totalInterestAmount, totalAmount }, paymentPlan });
+};
+const vehicleLoanDetail = async (req, res) => {
+    const { bankSeoName: seoName, maturity, amount, type } = req.query;
+    if (!seoName || !maturity || !amount || !type) return res.status(400).json({ success: false, message: 'Invalid queries' });
+    const bank = await getBankViaSeoName(seoName);
+    if (!bank) return res.status(400).json({ success: false, message: 'Invalid bankSeoName' });
+    const matchedLoan = await getVehicleLoanDetail(amount, maturity, bank, type);
+    if (!matchedLoan) return res.status(400).json({ success: false, message: 'Not Found' });
+    const interestRate = matchedLoan.interestRate / 100;
+    const paymentPlan = { amount, maturity, interestRate, monthlyPayments: houseLoanPaymentPlan(amount, maturity, interestRate) };
+    const monthlyInstallment = monthlyInstallmentCalculator(amount, maturity, interestRate);
+    const totalInterestAmount = (monthlyInstallment * maturity) - amount;
+    const expenseAmount = (amount * 0.005);
+    const totalFeeAmount = expenseAmount;
+    const totalAmount = totalInterestAmount + parseInt(amount) + totalFeeAmount;
+    res.status(200).json({ productInfo: { ...matchedLoan._doc, expenseAmount, totalFeeAmount, amount, maturity, monthlyInstallment, totalInterestAmount, totalAmount }, paymentPlan });
+};
+
 module.exports = {
     houseLoanList,
     housingLoanDetail,
     consumerLoanList,
-    vehicleLoanList
+    vehicleLoanList,
+    consumerLoanDetail,
+    vehicleLoanDetail
 }

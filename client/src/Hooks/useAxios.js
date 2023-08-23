@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-const useAxios = (config) => {
+const useAxios = (config, trigger=true) => {
     const [results, setResults] = useState([]);
     const [errors, setErrors] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +18,8 @@ const useAxios = (config) => {
     };
 
     useEffect(() => {
-        fetchData()
+        if(trigger)
+            fetchData()
     }, [config.url]);
 
     return [results, errors, isLoading];

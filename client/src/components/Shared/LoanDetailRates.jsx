@@ -27,7 +27,7 @@ function LoanDetailRates({ productInfo }) {
         },
         {
             title: 'Ort. Ekspertiz Ücreti',
-            value: `${appraisementFee.toLocaleString()} TL`
+            value: `${appraisementFee?.toLocaleString()} TL`
         },
         {
             title: 'İpotek Ücreti',
@@ -38,12 +38,16 @@ function LoanDetailRates({ productInfo }) {
         <>
             {
                 states.map((state, i) => {
-                    return (
-                        <div key={i} className='flex justify-between'>
-                            <span className='font-light'>{state.title}</span>
-                            <span className='font-bold'>{state.value}</span>
-                        </div>
-                    )
+                    {
+                        return (
+                            state.value &&
+                            <div key={i} className='flex justify-between'>
+                                <span className='font-light'>{state.title}</span>
+                                <span className='font-bold'>{state.value}</span>
+                            </div>
+
+                        )
+                    }
                 })
             }
         </>

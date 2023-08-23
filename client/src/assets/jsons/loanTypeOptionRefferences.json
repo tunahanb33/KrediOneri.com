@@ -1,0 +1,120 @@
+{
+    "house": [
+        {
+            "key": "12",
+            "value": "1 yıl (12 Ay)"
+        },
+        {
+            "key": "24",
+            "value": "2 yıl (24 Ay)"
+        },
+        {
+            "key": "36",
+            "value": "3 yıl (36 Ay)"
+        },
+        {
+            "key": "48",
+            "value": "4 yıl (48 Ay)"
+        },
+        {
+            "key": "60",
+            "value": "5 yıl (60 Ay)"
+        },
+        {
+            "key": "72",
+            "value": "6 yıl (72 Ay)"
+        },
+        {
+            "key": "84",
+            "value": "7 yıl (84 Ay)"
+        },
+        {
+            "key": "96",
+            "value": "8 yıl (96 Ay)"
+        },
+        {
+            "key": "108",
+            "value": "9 yıl (108 Ay)"
+        },
+        {
+            "key": "120",
+            "value": "10 yıl (120 Ay)"
+        }
+    ],
+    "consumer": [
+        {
+            "key": "3",
+            "value": "3 ay"
+        },
+        {
+            "key": "6",
+            "value": "6 ay"
+        },
+        {
+            "key": "9",
+            "value": "9 ay"
+        },
+        {
+            "key": "12",
+            "value": "12 ay"
+        },
+        {
+            "key": "18",
+            "value": "18 ay"
+        },
+        {
+            "key": "24",
+            "value": "24 ay"
+        },
+        {
+            "key": "30",
+            "value": "30 ay"
+        },
+        {
+            "key": "36",
+            "value": "36 ay"
+        }
+    ],
+    "vehicle": [
+        {
+            "key": "3",
+            "value": "3 ay"
+        },
+        {
+            "key": "6",
+            "value": "6 ay"
+        },
+        {
+            "key": "9",
+            "value": "9 ay"
+        },
+        {
+            "key": "12",
+            "value": "12 ay"
+        },
+        {
+            "key": "18",
+            "value": "18 ay"
+        },
+        {
+            "key": "24",
+            "value": "24 ay"
+        },
+        {
+            "key": "30",
+            "value": "30 ay"
+        },
+        {
+            "key": "36",
+            "value": "36 ay"
+        },
+        {
+            "key": "42",
+            "value": "42 ay"
+        },
+        {
+            "key": "48",
+            "value": "48 ay"
+        }
+    ]
+}

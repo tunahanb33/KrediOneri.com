@@ -7,16 +7,17 @@ import { useState, useEffect } from 'react';
 import PaymentPlan from '../components/Shared/PaymentPlan';
 import GeneralInformation from '../components/Shared/GeneralInformation';
 import useAxios from '../Hooks/useAxios';
-function HouseLoanBankDetail() {
+function VehicleLoanBankDetail() {
     const { bankName } = useParams();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(useLocation().search);
     const amount = queryParams.get('amount');
     const maturity = queryParams.get('maturity');
-    const [results, errors, isLoading] = useAxios({ method: 'get', url: `/housingloan/detail?bankSeoName=${bankName}&amount=${amount}&maturity=${maturity}` }, !!(amount && maturity));
+    const type = queryParams.get('type');
+    const [results, errors, isLoading] = useAxios({ method: 'get', url: `/vehicleloan/detail?bankSeoName=${bankName}&amount=${amount}&maturity=${maturity}&type=${type}` }, !!(amount && maturity && type));
     const [showPaymentPlan, setShowPaymentPlan] = useState(false);
     useEffect(() => {
-        if (!amount || !maturity) navigate('/konut-kredisi')
+        if (!amount || !maturity || !type) navigate('/tasit-kredisi')
     }, [amount, maturity]);
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
@@ -73,4 +74,4 @@ function HouseLoanBankDetail() {
     );
 }
 
-export default HouseLoanBankDetail;
+export default VehicleLoanBankDetail;

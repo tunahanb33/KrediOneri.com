@@ -1,29 +1,23 @@
 import Header from '../components/Shared/Header';
 import Footer from '../components/Shared/Footer';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import LoanPieChart from '../components/Shared/LoanPieChart';
 import LoanDetailRates from '../components/Shared/LoanDetailRates';
 import { useState, useEffect } from 'react';
 import PaymentPlan from '../components/Shared/PaymentPlan';
 import GeneralInformation from '../components/Shared/GeneralInformation';
-import axios from 'axios';
-
+import useAxios from '../Hooks/useAxios';
 function ConsumerLoanBankDetail() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [loanDetail, setLoanDetail] = useState({});
     const { bankName } = useParams();
-    const urlQueries = new URLSearchParams(useLocation().search);
-    const amount = urlQueries.get('amount');
-    const maturity = urlQueries.get('maturity');
-    const fetchLoanDetail = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_BASE_API_URL}/consumerloan/detail?bankSeoName=${bankName}&amount=${amount}&maturity=${maturity}`);
-        setLoanDetail(data);
-        setIsLoading(false);
-    }
-    useEffect(() => {
-        fetchLoanDetail();
-    }, []);
+    const navigate = useNavigate();
+    const queryParams = new URLSearchParams(useLocation().search);
+    const amount = queryParams.get('amount');
+    const maturity = queryParams.get('maturity');
+    const [results, errors, isLoading] = useAxios({ method: 'get', url: `/consumerloan/detail?bankSeoName=${bankName}&amount=${amount}&maturity=${maturity}` }, !!(amount && maturity));
     const [showPaymentPlan, setShowPaymentPlan] = useState(false);
+    useEffect(() => {
+        if (!amount || !maturity) navigate('/ihtiyac-kredisi')
+    }, [amount, maturity]);
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/*  Site header */}
@@ -41,10 +35,10 @@ function ConsumerLoanBankDetail() {
                                         {/* head */}
                                         <div className='w-full flex space-x-5'>
                                             <div className='w-[35%] bg-white'>
-                                                <LoanPieChart productInfo={loanDetail.productInfo} />
+                                                <LoanPieChart productInfo={results.productInfo} />
                                             </div>
                                             <div className='w-[65%] flex flex-col space-y-3 divide-y text-sm p-5 bg-white'>
-                                                <LoanDetailRates productInfo={loanDetail.productInfo} />
+                                                <LoanDetailRates productInfo={results.productInfo} />
                                             </div>
                                         </div>
                                         {/* alt props */}
@@ -58,10 +52,10 @@ function ConsumerLoanBankDetail() {
                                                 </div>
                                             </div>
                                             {
-                                                showPaymentPlan ? 
-                                                <PaymentPlan paymentPlan={loanDetail.paymentPlan} />
-                                                :
-                                                <GeneralInformation />
+                                                showPaymentPlan ?
+                                                    <PaymentPlan paymentPlan={results.paymentPlan} />
+                                                    :
+                                                    <GeneralInformation />
                                             }
                                         </div>
                                     </div>
